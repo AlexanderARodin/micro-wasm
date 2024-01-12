@@ -13,6 +13,14 @@ jobs:
     steps:
     - name: Clone
       uses: actions/checkout@v4
+    - uses: actions-rs/toolchain@v1 # get rust toolchain for wasm
+      with:
+        profile: minimal
+        toolchain: stable
+        target: wasm32-unknown-unknown
+        override: true
+    - name: Rust Cache # cache the rust build artefacts
+      uses: Swatinem/rust-cache@v1
       
     - name: Build
       run : |
