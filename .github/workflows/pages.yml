@@ -17,10 +17,7 @@ jobs:
     - name: Build
       run : |
         echo 'some build actions'
-        rm -rf dist
-        mkdir -p dist
-        cp assets/** dist/
-        ls ./dist/
+        make fill.dist
       
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
