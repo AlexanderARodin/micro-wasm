@@ -9,6 +9,14 @@
 	<p>some text</p>
 	<button id="test-button">PuSh</button>
 	<script src="starter.js"></script>
+	<script>
+		(async () => {
+			let response = await fetch('./micro_wasm.wasm');
+			let bytes = await response.arrayBuffer();
+			let { instance } = await WebAssembly.instantiate(bytes, { });
+			console.log('The answer is: ', instance.exports.invoke_test(13));
+		})();
+	</script>
 </body>
 </html>
 	
